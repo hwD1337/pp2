@@ -56,3 +56,43 @@ myiter = iter(myclass)
 
 for x in myiter:
   print(x)
+
+#Generator for squares of numbers up to N
+def squares_up_to_n(N):
+    for i in range(N + 1):
+        yield i * i
+for square in squares_up_to_n(5):
+    print(square)
+
+#Generator to print even numbers between 0 and n in comma-separated form
+def even_numbers(n):
+    for i in range(0, n + 1):
+        if i % 2 == 0:
+            yield i
+n = int(input("Enter a number: "))
+even_nums = list(even_numbers(n))
+print(", ".join(map(str, even_nums)))
+
+#Generator for numbers divisible by 3 and 4 between 0 and n
+def divisible_by_3_and_4(n):
+    for i in range(n + 1):
+        if i % 3 == 0 and i % 4 == 0:
+            yield i
+for num in divisible_by_3_and_4(20):
+    print(num)
+
+#Generator called squares to yield the square of all numbers from (a) to (b)
+def squares(a, b):
+    for i in range(a, b + 1):
+        yield i * i
+for square in squares(3, 6):
+    print(square)
+
+#Generator that returns all numbers from (n) down to 0
+def countdown(n):
+    for i in range(n, -1, -1):
+        yield i
+for num in countdown(5):
+    print(num)
+
+
