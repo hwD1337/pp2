@@ -2,12 +2,12 @@ import pygame
 
 pygame.init()
 
-# Размер экрана
+# Screen size
 screen_width = 600
 screen_height = 400
 screen = pygame.display.set_mode((screen_width, screen_height))
 
-# Цвета
+# colors
 blue = (0, 0, 150)
 black = (0, 0, 0)
 white = (255, 255, 255)
@@ -15,17 +15,17 @@ red = (255, 0, 0)
 green = (0, 255, 0)
 blue_color = (0, 0, 255)
 
-# Текущий цвет
+# current color
 current_color = white
 
 clock = pygame.time.Clock()
 
-# Режимы рисования
+# drawing options
 DRAW_CIRCLE = "circle"
 DRAW_RECT = "rectangle"
 ERASE = "erase"
 
-mode = DRAW_CIRCLE  # Начальный режим
+mode = DRAW_CIRCLE  # main screen
 
 def main():
     running = True
@@ -37,7 +37,7 @@ def main():
             if event.type == pygame.QUIT:
                 running = False
             
-            # Переключение режима
+            # Changing the option
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_c:
                     mode = DRAW_CIRCLE
@@ -52,7 +52,7 @@ def main():
                 elif event.key == pygame.K_3:
                     current_color = blue_color
             
-            # Рисование мышью
+            # draw with mouse
             if event.type == pygame.MOUSEBUTTONDOWN:
                 pos = pygame.mouse.get_pos()
                 if mode == DRAW_CIRCLE:
@@ -75,6 +75,6 @@ def draw_shapes(shapes):
         elif shape[0] == "rect":
             pygame.draw.rect(screen, shape[2], (*shape[1], 30, 30))
         elif shape[0] == "erase":
-            pygame.draw.circle(screen, blue, shape[1], 20)  # "Стираем" фон
+            pygame.draw.circle(screen, blue, shape[1], 20)  # clear
 
 main()
